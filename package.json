@@ -1,0 +1,17 @@
+{
+  "name": "botpartidas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Hola-mundo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "list": "^2.0.19",
+    "rng": "^0.2.2"
+  }
+}
