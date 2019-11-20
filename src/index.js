@@ -194,15 +194,9 @@ client.on('message', msg => {
               
             }
           }
-          /*
-          //for(var [prioridad,jugadores] of )
+          Partidas.delete(name) ;
+          historialPartidas.set(name, [historialPartidas.get(name)[0], false]) ;
 
-          j = Posibles_jugadores.get(0) ;
-          random = Math.random() * j.length ;
-          console.log(j) ; 
-          console.log(j.length) ;
-          console.log(random) ;
-          */
         }else{
 
           msg.reply(' esta partida ya ha sido cerrada') ;
