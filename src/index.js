@@ -58,7 +58,7 @@ client.on('message', msg => {
 
 
         // aumenta la prioridad
-        Roleros.set(msg.author.username, Roleros.get(msg.author.username) + 1) ;
+        // Roleros.set(msg.author.username, Roleros.get(msg.author.username) + 1) ;
 
       }else{
         msg.reply(' lo siento pero esa partida no existe') ;
