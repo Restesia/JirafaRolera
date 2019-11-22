@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client() ;
-var equal = require('equals') ;
+
 const numMaxPrioridad = 14 ;
 
 Roleros = new Map() ;
@@ -41,24 +41,18 @@ client.on('message', msg => {
       if(Partidas.has(name)){
 
         mapaPartida = Partidas.get(name) ;
-        if(!equal(historialPartidas.get(name)[0],msg.author.username)){
-          // comprueba si ya hay alguien registrado con esa prioridad
-          if(mapaPartida.has(Roleros.get(msg.author.username))){
+        // comprueba si ya hay alguien registrado con esa prioridad
+        if(mapaPartida.has(Roleros.get(msg.author.username))){
 
-            mapaPartida.set(Roleros.get(msg.author.username), mapaPartida.get(Roleros.get(msg.author.username)).push(msg.author.username)) ;
+          mapaPartida.set(Roleros.get(msg.author.username), mapaPartida.get(Roleros.get(msg.author.username)).push(msg.author.username)) ;
 
-          }else{
-            // en caso de que no haya nadie crea el array y lo añade con la prioridad
-            mapaPartida.set(Roleros.get(msg.author.username), [msg.author.username]) ;
-            
-            
-          }
-          msg.reply( ' ha sido añadido a la lista para la partida ' + name + ' con prioridad ' + Roleros.get(msg.author.username).toString()) ;
         }else{
-
-          msg.reply(' esa es tu partida compañero, no puedes participar en ella') ;
-
+          // en caso de que no haya nadie crea el array y lo añade con la prioridad
+          mapaPartida.set(Roleros.get(msg.author.username), [msg.author.username]) ;
+          
+          
         }
+        msg.reply( ' ha sido añadido a la lista para la partida ' + name + ' con prioridad ' + Roleros.get(msg.author.username).toString()) ;
 
 
         // aumenta la prioridad
@@ -142,7 +136,7 @@ client.on('message', msg => {
       if(!Partidas.has(name)){
 
         Partidas.set(name, new Map()) ;
-        historialPartidas.set(name, [msg.author.username,true]) ; 
+        historialPartidas.set(name, true) ; 
         msg.reply(' Tu partida se ha creado correctamente, los jugadores ya se pueden apuntar') ;
         msg.channel.send( 'Se habre la partida de ' + msg.author.username + ', no hace falta correr chicos' ) ;
 
@@ -197,7 +191,7 @@ client.on('message', msg => {
             }
           }
           Partidas.delete(name) ;
-          historialPartidas.set(name, [historialPartidas.get(name)[0], false]) ;
+          historialPartidas.set(name, false) ;
 
         }else{
 
