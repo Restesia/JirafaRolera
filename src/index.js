@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client() ;
+var equal = require('equals') ;
 const numMaxPrioridad = 14 ;
 
 Roleros = new Map() ;
@@ -12,6 +13,7 @@ client.on('ready', () => {
 }) ;
 
 client.on('message', msg => {
+
     if(msg.content.includes('!Participar')){
 
       if(!Roleros.has(msg.author.username)){
@@ -39,7 +41,7 @@ client.on('message', msg => {
       if(Partidas.has(name)){
 
         mapaPartida = Partidas.get(name) ;
-        if(!historialPartidas.get(name)[0]===msg.author.username){
+        if(!equal(historialPartidas.get(name)[0],msg.author.username)){
           // comprueba si ya hay alguien registrado con esa prioridad
           if(mapaPartida.has(Roleros.get(msg.author.username))){
 
