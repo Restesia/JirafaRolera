@@ -44,7 +44,9 @@ client.on('message', msg => {
         // comprueba si ya hay alguien registrado con esa prioridad
         if(mapaPartida.has(Roleros.get(msg.author.username))){
           prioridad = Roleros.get(msg.author.username) ;
-          mapaPartida.set(prioridad, mapaPartida.get(prioridad).push(msg.author.username)) ;
+          array = mapaPartida.get(prioridad)
+          console.log(array)
+          mapaPartida.set(prioridad, array.push(msg.author.username)) ;
 
         }else{
           // en caso de que no haya nadie crea el array y lo añade con la prioridad
@@ -95,7 +97,7 @@ client.on('message', msg => {
             // elimina a la persona en caso de que esté y le reduce la prioridad
             mapaPartida.get(Roleros.get(msg.author.username)-1).splice(mapaPartida.get(Roleros.get(msg.author.username)-1).indexOf(msg.author.username)) ;
             Roleros.set(msg.author.username, Roleros.get(msg.author.username) -1) ;
-            msg.channel.send(msg.author.username + ' Te hemos eliminado de la partida ' + name + ' tu prioridad vuelve a ser de ' + Roleros.get(msg.author.username).toString()) ;
+            msg.channel.send(msg.author.username + ' Te hemos eliminado de la partida ' + name + ' tu prioridad vuelve a ser de ' + (Roleros.get(msg.author.username)+1).toString()) ;
 
           }else{
 
