@@ -5,7 +5,7 @@ const numMaxPrioridad = 14 ;
 
 Roleros = new Map() ;
 Partidas = new Map() ;
-historialPartidas = new Map(); 
+historialPartidas = new Map() ; 
 
 
 client.on('ready', () => {
@@ -43,8 +43,8 @@ client.on('message', msg => {
         mapaPartida = Partidas.get(name) ;
         // comprueba si ya hay alguien registrado con esa prioridad
         if(mapaPartida.has(Roleros.get(msg.author.username))){
-
-          mapaPartida.set(Roleros.get(msg.author.username), mapaPartida.get(Roleros.get(msg.author.username)).push(msg.author.username)) ;
+          prioridad = Roleros.get(msg.author.username) ;
+          mapaPartida.set(prioridad, mapaPartida.get(prioridad).push(msg.author.username)) ;
 
         }else{
           // en caso de que no haya nadie crea el array y lo añade con la prioridad
@@ -138,7 +138,7 @@ client.on('message', msg => {
         Partidas.set(name, new Map()) ;
         historialPartidas.set(name, true) ; 
         msg.reply(' Tu partida se ha creado correctamente, los jugadores ya se pueden apuntar') ;
-        msg.channel.send( 'Se habre la partida de ' + msg.author.username + ', no hace falta correr chicos' ) ;
+        msg.channel.send( 'Se abre la partida de ' + msg.author.username + ', no hace falta correr chicos' ) ;
 
       }else{
 
